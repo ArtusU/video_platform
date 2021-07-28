@@ -20,6 +20,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     'core'
 ]
@@ -54,6 +59,8 @@ TEMPLATES = [
     },
 ]
 
+SITE_ID = 1
+
 WSGI_APPLICATION = 'video_platform.wsgi.application'
 
 
@@ -87,8 +94,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 LANGUAGE_CODE = 'en-us'
 
@@ -120,3 +130,10 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'core.CustomUser'
+
+ACCOUNT_AUTHENTICATION_METHOD='email'
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION='none'
+ACCOUNT_USERNAME_REQUIRED=False
+
+LOGIN_REDIRECT_URL='/'
