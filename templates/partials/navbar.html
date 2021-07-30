@@ -9,22 +9,18 @@
 
         {% if AUTH != 'false'  %}
             {% if request.user.is_authenticated %}
+            <div>Welcome: {{ request.user.email }}</div>
             <div>
-            <form action="#" method="post">
-                {% csrf_token %}
-                <button class='bg-primary_red py-1 px-3 text-white md:text-lg rounded-md'>
-                    Logout
-                </button>
-            </form>
+                <form action="{% url 'account_logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class='bg-primary_red py-1 px-3 text-white md:text-lg rounded-md'>Logout</button>
+                </form>
             </div>
             {% else %}
             <div>
-            <a href="#">
-
-                <button class='bg-primary_red py-1 px-3 text-white md:text-lg rounded-md'>
-                    Sign In 
-                </button>
-            </a>
+                <a href="{% url 'account_login' %}">
+                    <button class='bg-primary_red py-1 px-3 text-white md:text-lg rounded-md'>Sign In</button>
+                </a>
             </div>
             {% endif %}
         {% endif %}
