@@ -26,7 +26,7 @@ class ProfileCreate(View):
         form=ProfileForm()
         return render(request, 'profileCreate.html', {'form':form})
 
-    def post(self,request,*args, **kwargs):
+    def post(self,request, *args, **kwargs):
         form=ProfileForm(request.POST or None)
         if form.is_valid():
             print(form.cleaned_data)
