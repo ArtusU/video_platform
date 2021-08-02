@@ -22,8 +22,7 @@ Picflix
                     {{show_case.description | slice:":500"}}
                 </p>
                 <div class="flex my-4">
-                    <a href="#">
-                    {% comment %} <a href="{% url 'core:play' movie_id=show_case.uuid %}"> {% endcomment %}
+                    <a href="{% url 'core:play' movie_id=show_case.uuid %}">
                     
                         <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
                             <ion-icon name="play" class="text-2xl"></ion-icon>
